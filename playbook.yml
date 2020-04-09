@@ -13,7 +13,7 @@
      name: python-docker
      state: present
     when:
-    - ansible_presentation == "CentOS"
+    - ansible_distribution == "CentOS"
   - name: pull image
     docker_image:
      name: "{{ image }}"
@@ -21,7 +21,7 @@
   - name: create container
     docker_container:
      name: docker_ansible
-     state: present
+     state: started
      image:  "{{ image }}"
      exposed_port:
      - 8090:80
